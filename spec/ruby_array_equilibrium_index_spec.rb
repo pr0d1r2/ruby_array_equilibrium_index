@@ -5,8 +5,8 @@ describe EquilibriumIndexArray do
     let(:array) { [1, 3, 2, 3, 1] }
     let(:instance) { described_class.new(array) }
 
-    describe '.equilibrium_index' do
-      subject { described_class.equilibrium_index(array) }
+    describe '.first_equilibrium_index' do
+      subject { described_class.first_equilibrium_index(array) }
 
       it { is_expected.to eq 2 }
     end
@@ -94,8 +94,8 @@ describe EquilibriumIndexArray do
   context 'when have array without equilibrium index' do
     let(:array) { [1, 2, 2, 3, 1] }
 
-    describe '.equilibrium_index' do
-      subject { described_class.equilibrium_index(array) }
+    describe '.first_equilibrium_index' do
+      subject { described_class.first_equilibrium_index(array) }
 
       it { is_expected.to eq(-1) }
     end
