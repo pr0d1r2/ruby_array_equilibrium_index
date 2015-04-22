@@ -91,6 +91,7 @@ describe EquilibriumIndexArray do
       end
     end
   end
+
   context 'when have array without equilibrium index' do
     let(:array) { [1, 2, 2, 3, 1] }
 
@@ -98,6 +99,16 @@ describe EquilibriumIndexArray do
       subject { described_class.first_equilibrium_index(array) }
 
       it { is_expected.to eq(-1) }
+    end
+  end
+
+  context 'when have array with two equilibrium indices' do
+    let(:array) { [-7, 1, 5, 2, -4, 3, 0] }
+
+    describe '.equilibrium_indices' do
+      subject { described_class.equilibrium_indices(array) }
+
+      it { is_expected.to eq([3, 6]) }
     end
   end
 end

@@ -10,8 +10,8 @@ class EquilibriumIndexArray < Array
     self[(n + 1)..-1].inject(:+)
   end
 
-  def first_equilibrium_index
-    1.upto(size) do |n|
+  def first_equilibrium_index(start = 1)
+    start.upto(size - 1) do |n|
       return n if left_sum(n) == right_sum(n)
     end
     -1
@@ -19,5 +19,19 @@ class EquilibriumIndexArray < Array
 
   def self.first_equilibrium_index(a)
     new(a).first_equilibrium_index
+  end
+
+  def equilibrium_indices
+    last = 0
+    1.upto(size - 1).map do |n|
+      next if last > n
+      last = first_equilibrium_index(last + 1)
+      last = nil if last == -1
+      last
+    end.compact
+  end
+
+  def self.equilibrium_indices(a)
+    new(a).equilibrium_indices
   end
 end
